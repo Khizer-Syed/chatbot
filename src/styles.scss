@@ -1,0 +1,32 @@
+@import './themes';
+
+// framework component styles
+@import '~@nebular/theme/styles/globals';
+
+// install the framework styles
+@include nb-install() {
+  @include nb-theme-global();
+};
+
+.nb-theme-dark nb-accordion nb-accordion-item-body .item-body,
+.nb-theme-default nb-accordion nb-accordion-item-body .item-body,
+.nb-theme-cosmic nb-accordion nb-accordion-item-body .item-body{
+  padding: 0 1.25rem;
+}
+
+.nb-theme-dark nb-chat .header {
+  height: 105px;
+  text-align: center;
+  position: relative;
+}
+
+.nb-theme-dark nb-chat .header::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 60px;
+  width: 60px;
+  background-color: white;
+  border-radius: 50%;
+}

@@ -1,0 +1,46 @@
+<nb-layout>
+
+
+    <nb-layout-column>
+        <div id="resizable" *ngIf="openChatBot">
+            <i class="material-icons icon icon-settings" (click)="openSettings()">settings</i>
+            <!-- <i class="material-icons icon icon-launch" (click)="openInNewWindow()">launch</i> -->
+            <div id="resize-hook"></div>
+            <app-chatbot (messageAdded)="messageAdded()"></app-chatbot>
+            <div class="overlay-container" *ngIf="openSettingsDrawer">
+                <div id="overlay" (click)="closeSettings()"></div>
+                <div class="settings-container">
+                    <nb-accordion>
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>Font Size</nb-accordion-item-header>
+                            <nb-accordion-item-body>
+                                <nb-list>
+                                    <nb-list-item (click)="changeFontSize('small')">Small</nb-list-item>
+                                    <nb-list-item (click)="changeFontSize('normal')">Normal</nb-list-item>
+                                    <nb-list-item (click)="changeFontSize('large')">Large</nb-list-item>
+                                </nb-list>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+
+                        <nb-accordion-item>
+                            <nb-accordion-item-header>Theme</nb-accordion-item-header>
+                            <nb-accordion-item-body>
+                                <nb-list>
+                                    <nb-list-item (click)="changeTheme('default')">Default</nb-list-item>
+                                    <nb-list-item (click)="changeTheme('dark')">Dark</nb-list-item>
+                                </nb-list>
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+                    </nb-accordion>
+                </div>
+            </div>
+        </div>
+        <div class="chat-icon-container" (click)="toggleChatBotWindow()" [ngClass]="{up: !openChatBot, down: openChatBot}">
+            <i *ngIf="!openChatBot" class="material-icons icon icon-message">library_books</i>
+            <i *ngIf="openChatBot" class="material-icons icon icon-message icon-close">close</i>
+        </div>
+        <p class="popup">Click here to start chatting!</p>
+
+    </nb-layout-column>
+
+</nb-layout>

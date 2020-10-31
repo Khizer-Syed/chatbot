@@ -1,0 +1,159 @@
+@import '../themes';
+
+nb-layout-column {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+}
+
+#resizable {
+  display: block;
+  position: fixed;
+  bottom: 15%;
+  right: 5%;
+  min-height: 500px;
+  min-width: 350px;
+  width: 350px;
+  height: 500px;
+  border: 1px solid black;
+  overflow-x: auto;
+  overflow-y: hidden;
+  z-index: 1;
+}
+#resize-hook {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.chat-icon-container {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: nb-theme(color-primary-500);
+}
+
+.chat-icon-container:after {
+  position: absolute;
+  top: -24%;
+  left: 38%;
+  border-width: 8px;
+  border-style: solid;
+}
+
+.down.chat-icon-container:after {
+  content: "";
+  border-color: transparent transparent nb-theme(color-primary-500) transparent;
+}
+
+.up:hover.chat-icon-container:after {
+  content: "";
+  border-color: #fff transparent transparent transparent;
+  top: -14%;
+}
+
+.popup {
+  position: absolute;
+  bottom: 8%;
+  right: 5%;
+  background-color: white;
+  color: nb-theme(color-primary-500);
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  z-index: 1;
+  display: none;
+}
+
+.chat-icon-container.up:hover ~ .popup {
+  display: block;
+}
+
+.icon-close {
+  animation: animateIcon .2s ease-in;
+
+}
+
+.icon-settings {
+  top: 15px;
+  right: 60px;
+}
+
+.icon-launch {
+  top: 15px;
+  right: 15px;
+}
+
+.icon-message {
+  font-size: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+#overlay {
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 50; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.settings-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100%;
+  background: nb-theme(background-basic-color-1);
+  z-index: 60;
+}
+
+.overlay-container {
+  position: absolute;
+  width: 100%; /* Full width (cover the whole page) */
+  height: calc(100% - 57px); /* Full height (cover the whole page) */
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+nb-list-item {
+  cursor: pointer;
+}
+
+.item-body {
+  padding: 0 1.25rem !important;
+}
+
+@include nb-install-component {
+  .settings-container {
+    background: nb-theme(background-basic-color-1);
+  }
+}
+
+@keyframes animateIcon {
+ 0% {
+   transform: translate(-50%, -50%) rotate(0);
+ }
+  100% {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+}
+
+
+
